@@ -3,6 +3,8 @@ import dotenv from "dotenv";
 import cors from "cors";
 import connectDB from "./config/connectDB.js";
 import router from "./routes/authRoutes.js";
+import songRouter from "./routes/songRoutes.js";
+
 
 dotenv.config(".env");////if we don't want to show the port directly we use .env file and from there we can access the things which we want to and hide it from the direct display
 
@@ -26,7 +28,7 @@ app.get("/", (req, res) => {//here we are declaring the function with parameters
     res.status(200).json({message: "Server is Working."})
 })//status(200) means "ok" server is working fine
 
-
+app.use("/api/songs", songRouter);
 app.use("/api/auth", router);
 
 
